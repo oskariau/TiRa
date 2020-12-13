@@ -103,6 +103,25 @@ public class BinaryTree {
         return root.left() == null ? root.getData() : findSmallestValue(root.left());
     }
     
+ // method to check if a node is leaf or not
+    public static boolean isLeaf(Node a){
+        if(a.right()==null && a.left()==null)
+            return true;
+        return false;
+    }
+
+    // function to return maximum of two numbers
+    public static int getMax(int a, int b){
+        return (a>b) ? a : b;
+    }
+    
+    public int getHeight(Node a) {
+    	if (a == null || isLeaf(a)) return 0;
+    	
+    	//height of a node will be 1+ greater among height of right subtree and height of left subtree
+        return(getMax(getHeight(a.left()), getHeight(a.right())) + 1);
+    }
+    
     public Node root() {
     	return root;
     }
